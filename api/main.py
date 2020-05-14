@@ -5,6 +5,7 @@ import json
 from time import strftime, gmtime
 app = Flask(__name__)
 
+
 def server():
     @app.route('/', methods=['POST'])
     def get_image():
@@ -14,6 +15,11 @@ def server():
             data = request.get_json()
             process_image(data.image)
 
+    @app.route('/status', methods=['GET'])
+    def status():
+        if request.method == 'GET':
+            return "Server is on"
+
 
 if __name__ == '__main__':
-    app.run()
+   app.run()
