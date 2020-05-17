@@ -59,7 +59,7 @@ def compute_average_image_color(img):
             b_total += b
             count += 1
 
-    return (r_total/count, g_total/count, b_total/count)
+    return (print("red:",r_total/count),print("green:",g_total/count),print("Blue",b_total/count))
 
 img = Image.open('a.png')
 #img = img.resize((50,50))  # Small optimization
@@ -70,3 +70,52 @@ print(average_color)
 
 # result = ''
 # return result
+
+
+#gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+#hsv = cv2.cvtColor(gray,cv2.COLOR_BGR2HSV)
+#edges = cv2.Canny(image,50,150)
+#contours,hierarchy = cv2.findContours(edges,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+
+def PrintInColor(img):
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    LIGHT_PURPLE = '\033[94m'
+    PURPLE = '\033[95m'
+    END = '\033[0m'
+
+
+    @classmethod
+    def RED(cls, s, **kwargs):
+        print(cls.RED + s + cls.END, **kwargs)
+
+    @classmethod
+    def GREEN(cls, s, **kwargs):
+        print(cls.GREEN + s + cls.END, **kwargs)
+
+    @classmethod
+    def yellow(cls, s, **kwargs):
+        print(cls.YELLOW + s + cls.END, **kwargs)
+
+    @classmethod
+    def lightPurple(cls, s, **kwargs):
+        print(cls.LIGHT_PURPLE + s + cls.END, **kwargs)
+
+    @classmethod
+    def purple(cls, s, **kwargs):
+        print(cls.PURPLE + s + cls.END, **kwargs)
+
+PrintInColor.red('hello', end=' ')
+PrintInColor.green('world')
+
+img = image
+
+PrintInColor(img)
+
+
+
+
+
+
+
